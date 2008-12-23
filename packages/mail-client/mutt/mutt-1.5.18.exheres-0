@@ -1,7 +1,8 @@
 # Modified by: Gaute Hope <eg@gaute.vetsj.com>
 # A valid mail dir must exist, i.e.: /var/spool/mail
 # MAILDIR enviornment variable or similar might work.
-# Todo: gpg 
+#
+# TODO: gpg 
 
 DEPENDENCIES=" 
 	build,run: 
