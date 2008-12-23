@@ -1,16 +1,15 @@
 # Modified by: Gaute Hope <eg@gaute.vetsj.com>
 # A valid mail dir must exist, i.e.: /var/spool/mail
-# MAILDIR or similar var might work.
+# MAILDIR enviornment variable or similar might work.
 
-_mtime_=1228843474
 DEPENDENCIES=" 
 	build,run: 
 		sys-libs/ncurses	
 		sys-libs/gdbm
 		ssl? ( dev-libs/openssl ) 
 		idn? ( net-dns/libidn ) 
-		sasl? ( net-libs/cyrus-sasl ) 
-		imap? ( )"
+		sasl? ( net-libs/cyrus-sasl )" 
+		
 
 DOWNLOADS=ftp://ftp.mutt.org/mutt/devel/mutt-1.5.18.tar.gz
 HOMEPAGE=http://www.mutt.org
@@ -19,7 +18,9 @@ SUMMARY=A text-based email client
 
 PLATFORMS="~x86 ~amd64"
 
-MYOPTIONS="idn nls sasl ssl imap"
+MYOPTIONS="idn nls sasl ssl imap smtp pop"
 SLOT=0
 EAPI=exheres-0
 DEFINED_PHASES=-
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES="imap smtp pop"
