@@ -1,0 +1,11 @@
+_mtime_=1228843474
+DEPENDENCIES=( build,run: sys-libs/ncurses sys-libs/gdbm ssl? ( dev-libs/openssl ) idn? ( net-dns/libidn ) sasl? ( net-libs/cyrus-sasl ) ) ( build,run: sys-libs/ncurses sys-libs/gdbm ssl? ( dev-libs/openssl ) idn? ( net-dns/libidn ) sasl? ( net-libs/cyrus-sasl ) ) ( build,run: ssl? ( ) idn? ( ) sasl? ( ) ) 
+SLOT=0
+DOWNLOADS=ftp://ftp.mutt.org/mutt/devel/mutt-1.5.18.tar.gz
+HOMEPAGE=http://www.mutt.org
+LICENCES=GPL-2
+SUMMARY=A text-based email client
+PLATFORMS=~x86 ~amd64
+MYOPTIONS=idn nls sasl ssl
+EAPI=exheres-0
+DEFINED_PHASES=-
