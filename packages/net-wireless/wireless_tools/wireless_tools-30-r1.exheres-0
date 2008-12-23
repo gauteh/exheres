@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # Based in part upon 'wireless-tools-29.ebuild' from Gentoo, which is:
 #     Copyright 1999-2008 Gentoo Foundation
+#
+#     2008-12-23 Gaute Hope <eg@gaute.vetsj.com> - bumped to version 30-pre7, hardcoded download url 
 
 require multilib toolchain-funcs
 
