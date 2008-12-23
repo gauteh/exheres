@@ -10,7 +10,7 @@ WORK="${WORKBASE}/${MY_PNV}"
 
 SUMMARY="Wireless Tools for Linux"
 HOMEPAGE="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
-DOWNLOADS="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/${MY_PNV}.tar.gz"
+DOWNLOADS="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/wireless_tools.30.pre7.tar.gz"
 
 
 LICENCES="GPL-2"
