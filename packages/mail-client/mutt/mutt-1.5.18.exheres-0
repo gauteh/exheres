@@ -1,6 +1,7 @@
 # Modified by: Gaute Hope <eg@gaute.vetsj.com>
 # A valid mail dir must exist, i.e.: /var/spool/mail
 # MAILDIR enviornment variable or similar might work.
+# Todo: gpg 
 
 DEPENDENCIES=" 
 	build,run: 
@@ -24,3 +25,4 @@ EAPI=exheres-0
 DEFINED_PHASES=-
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(imap smtp pop)
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=(ssl sasl idn)
