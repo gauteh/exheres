@@ -1,3 +1,7 @@
+# Modified by: Gaute Hope <eg@gaute.vetsj.com>
+# A valid mail dir must exist, i.e.: /var/spool/mail
+# MAILDIR or similar var might work.
+
 _mtime_=1228843474
 DEPENDENCIES=( build,run: sys-libs/ncurses sys-libs/gdbm ssl? ( dev-libs/openssl ) idn? ( net-dns/libidn ) sasl? ( net-libs/cyrus-sasl ) ) ( build,run: sys-libs/ncurses sys-libs/gdbm ssl? ( dev-libs/openssl ) idn? ( net-dns/libidn ) sasl? ( net-libs/cyrus-sasl ) ) ( build,run: ssl? ( ) idn? ( ) sasl? ( ) ) 
 SLOT=0
@@ -6,6 +10,6 @@ HOMEPAGE=http://www.mutt.org
 LICENCES=GPL-2
 SUMMARY=A text-based email client
 PLATFORMS="~x86 ~amd64"
-MYOPTIONS=idn nls sasl ssl
+MYOPTIONS=idn nls sasl ssl imap
 EAPI=exheres-0
 DEFINED_PHASES=-
