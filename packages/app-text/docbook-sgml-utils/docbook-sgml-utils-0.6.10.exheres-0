@@ -1,0 +1,28 @@
+# Copyright 2008 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+# Inspired by Gentoo Ebuild with the same name
+
+SUMMARY="shell scripts to manage DocBook documents"
+HOMEPAGE="http://sourceware.org/docbook-tools/"
+
+WORK="${WORKBASE}/docbook-utils-${PV}"
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~x86"
+
+DOWNLOADS="ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/docbook-utils-${PV}.tar.gz"
+
+DEPENDENCIES="
+	build+run:
+		app-text/openjade
+		app-text/docbook-dsssl-stylesheets
+		=app-text/docbook-sgml-dtd-3.0
+		=app-text/docbook-sgml-dtd-3.1
+		=app-text/docbook-sgml-dtd-4.0
+		=app-text/docbook-sgml-dtd-4.1
+		app-text/docbook-xml-dtd
+		dev-perl/SGMLSpm
+
+	build:
+		dev-lang/perl
+	"

@@ -1,0 +1,37 @@
+--- jade/Makefile.sub.orig	2002-11-15 23:46:50.000000000 +0100
++++ jade/Makefile.sub	2006-04-30 19:48:30.000000000 +0200
+@@ -4,7 +4,8 @@
+ INCLUDE=-I$(srcdir)/../grove -I$(srcdir)/../spgrove -I$(srcdir)/../style
+ # XLIBS=../style/libostyle.a ../spgrove/libospgrove.a ../grove/libogrove.a \
+ #   ../lib/libosp.a
+-XLIBS=../style/libostyle.a ../spgrove/libospgrove.a ../grove/libogrove.a $(splibdir)/libosp.a
++SPLIBS=-L$(splibdir) -losp
++XLIBS=../style/libostyle.a ../grove/libogrove.a ../spgrove/libospgrove.a
+ GENSRCS=JadeMessages.h HtmlMessages.h RtfMessages.h TeXMessages.h \
+  HtmlFOTBuilder_inst.cxx RtfFOTBuilder_inst.cxx  TeXFOTBuilder_inst.cxx \
+  TransformFOTBuilder_inst.cxx MifMessages.h MifFOTBuilder_inst.cxx
+--- spgrove/Makefile.sub.orig	2006-04-30 20:27:32.000000000 +0200
++++ spgrove/Makefile.sub	2006-04-30 20:59:40.000000000 +0200
+@@ -1,8 +1,7 @@
+ LTVERSION=0:1:0
+ LIB=ospgrove
+ INCLUDE=-I$(srcdir)/../grove
+-DEPLIBS=-lm -L$(TOP)/grove -L$(TOP)/grove/.libs \
+-	-L$(TOP)/lib -L$(TOP)/lib/.libs \
+-	$(LIB_THREADS)
++DEPLIBS=-lm $(TOP)/grove/libogrove.la \
++	$(LIB_THREADS)
+ OBJS=GroveApp.o GroveBuilder.o SdNode.o
+ GENSRCS=grove_inst.cxx
+ 
+--- Makefile.prog.in.orig	2006-05-01 19:44:33.000000000 +0200
++++ Makefile.prog.in	2006-05-01 19:45:01.000000000 +0200
+@@ -19,7 +19,7 @@
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS) $(COBJS) $(LT_LIBS)
+-	$(LIBTOOL) --mode=link $(CXX) $(LINKFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(COBJS) $(LT_LIBS)
++	$(LIBTOOL) --mode=link $(CXX) $(LINKFLAGS) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(COBJS) $(LT_LIBS) $(SPLIBS)
+ 
+ install: $(PROG)
+ 	-test -d $(DESTDIR)$(bindir) || \
