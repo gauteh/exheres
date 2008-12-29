@@ -1,6 +1,7 @@
 # Copyright 2008 Gaute Hope <eg@gaute.vetsj.com>
 # Distributed under the terms of the GNU General Public License v2
-# Inspired by Gentoo Ebuild with the same name
+# Based in part upon 'docbook-sgml-utils-0.6.14.ebuild' from Gentoo, which is:
+# Copyright 1999-2008 Gentoo Foundation.
 
 SUMMARY="shell scripts to manage DocBook documents"
 HOMEPAGE="http://sourceware.org/docbook-tools/"
@@ -11,18 +12,32 @@ SLOT="0"
 PLATFORMS="~x86"
 
 DOWNLOADS="ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/docbook-utils-${PV}.tar.gz"
+MYOPTIONS="jadetex"
 
 DEPENDENCIES="
-	build+run:
-		app-text/openjade
-		app-text/docbook-dsssl-stylesheets
-		=app-text/docbook-sgml-dtd-3.0
-		=app-text/docbook-sgml-dtd-3.1
-		=app-text/docbook-sgml-dtd-4.0
-		=app-text/docbook-sgml-dtd-4.1
-		app-text/docbook-xml-dtd
-		dev-perl/SGMLSpm
+    build+run:
+        app-text/openjade
+        app-text/docbook-dsssl-stylesheets
+        app-text/docbook-sgml-dtd[~3.0|~3.1|~4.0]
+        app-text/docbook-xml-dtd
+        dev-perl/SGMLSpm
+        jadetex? ( app-text/jadetex )
+            
+    build:
+        dev-lang/perl
+    "
 
-	build:
-		dev-lang/perl
-	"
+# FIXME: does not yet exist 
+#        app-text/docbook-xml-simple-dtd[~1.0|~4.1.2.4]
+
+src_install () {
+   default
+
+   if ! optionq "jadetex"; then
+        for i in dvi pdf ps ; do
+            rm ${IMAGE}/usr/bin/docbook2${i}
+            rm ${IMAGE}/usr/share/sgml/docbook/utils-${PV}/backends/${i}
+            rm ${IMAGE}/usr/share/man/man1/docbook2${i}.1
+        done
+   fi
+}
