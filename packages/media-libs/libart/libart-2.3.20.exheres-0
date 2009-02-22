@@ -1,0 +1,26 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require versionator
+
+SUMMARY="a high-performance 2D graphics library"
+DESCRIPTION="
+Libart is a library for high-performance 2D graphics. It supports
+a very powerful imaging model, basically the same as SVG and the 
+Java 2D API. It includes all PostScript imaging operations, and adds
+antialiasing and alpha-transparency. It is also highly tuned for 
+incremental rendering. It contains data structures and algorithms 
+suited to rapid, precise computation of Region of Interest, an
+d a two-phase rendering pipeline optimized for interactive display.
+"
+HOMEPAGE="http://www.levien.com/libart/"
+MY_V="$(get_version_component_range 1-2 ${PV})"
+DOWNLOADS="http://ftp.gnome.org/pub/GNOME/sources/libart_lgpl/${MY_V}/libart_lgpl-${PV}.tar.bz2"
+WORK="${WORKBASE}/libart_lgpl-${PV}"
+LICENCES="LGPL"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES=""
+

@@ -1,0 +1,31 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="a library to convert from/to unicode"
+DESCRIPTION="
+For historical reasons, international text is often encoded using a language or country dependent character encoding. 
+With the advent of the internet and the frequent exchange of text across countries - even the viewing of a web page from
+a foreign country is a "text exchange" in this context -, conversions between these encodings have become important. They
+have also become a problem, because many characters which are present in one encoding are absent in many other encodings. 
+To solve this mess, the Unicode encoding has been created. It is a super-encoding of all others and is therefore the 
+default encoding for new text formats like XML.
+
+Still, many computers still operate in locale with a traditional (limited) character encoding. Some programs, like mailers
+and web browsers, must be able to convert between a given text encoding and the user's encoding. Other programs internally 
+store strings in Unicode, to facilitate internal processing, and need to convert between internal string representation 
+(Unicode) and external string representation (a traditional encoding) when they are doing I/O. GNU libiconv is a conversion
+library for both kinds of applications. 
+"
+HOMEPAGE="http://www.gnu.org/software/libiconv/"
+DOWNLOADS="http://ftp.gnu.org/pub/gnu/libiconv/${PNV}.tar.gz"
+
+LICENCES="LGPL GPL"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="
+            extra_encodings [[ description = [ Add support for rarely used encodings ] ]]
+            nls"
+
+DEPENDENCIES=""
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( nls "extra_encodings extra-encodings" )
