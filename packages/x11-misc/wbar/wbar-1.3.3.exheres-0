@@ -26,8 +26,9 @@ src_prepare () {
     sed -e "s:/usr/share/wbar:${IMAGE}usr/share/wbar:" \
         -i Makefile || die "Could not set prefix"
 
-    sed -e "s:install ./wbar /usr/bin:install -D ./wbar ${IMAGE}usr/bin/wbar:" \
-        -i Makefile || die "Could not set prefix"
+    sed -e \
+      "s:install ./wbar /usr/bin:install -D ./wbar ${IMAGE}usr/bin/wbar:" \
+      -i Makefile || die "Could not set prefix"
 
     # fix symlinks
     sed -e "s:ln -fs:cp:" -i Makefile || die "Could not fix symlinks"

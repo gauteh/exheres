@@ -1,0 +1,28 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="GUI for configuring wbar"
+DESCRIPTION="
+"
+HOMEPAGE="http://www.ihku.biz/wbarconf/"
+DOWNLOADS="http://www.ihku.biz/wbarconf/${PNV}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        >=dev-lang/python-2.4
+        >=gnome-bindings/pygtk-2.10
+        >=sys-devel/gettext-0.16
+        >=x11-misc/wbar-1.3.3
+        >=gnome-bindings/pygobject-2.14"
+
+WORK=${WORKBASE}/${PN}
+
+src_install() {
+    sh ${WORK}/install.sh ${IMAGE} || die "Failed to install"
+}
+
