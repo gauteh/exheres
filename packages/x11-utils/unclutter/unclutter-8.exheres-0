@@ -1,0 +1,45 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Unclutter hides the mouse cursor when not in use"
+DESCRIPTION="
+Unclutter is a program which runs permanently in the background of an X11
+session.  It checks on the X11 pointer (cursor) position every few
+seconds, and when it finds it has not moved (and no buttons
+are pressed on the mouse, and the cursor is not in the root window)
+it creates a small sub-window as a child of the window the cursor is in.
+The new window installs a cursor of size 1x1 but a mask of
+all 0, ie an invisible cursor.  This allows you to see all the text in
+an xterm or xedit, for example.  The human factors crowd would agree it
+should make things less distracting.
+"
+HOMEPAGE="http://ftp.x.org/contrib/utilities/unclutter-8.README"
+DOWNLOADS="http://ftp.x.org/contrib/utilities/${PNV}.tar.Z"
+
+LICENCES="public-domain"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="doc"
+
+WORK=${WORKBASE}/${PN}
+
+DEPENDENCIES="
+    build+run:
+        >=x11-libs/libX11-1.1.5"
+
+src_prepare () {
+    default
+    
+    expatch ${FILES}/00-fix_Makefile.patch || die "Failed to patch Makefile."
+    }
+
+src_install () {
+    mkdir -p ${IMAGE}usr/bin || die "Could not create install dir."
+    
+    if optionq "doc"; then
+        mkdir -p ${IMAGE}usr/share/man/man1 || die "Failed to create man dir."
+        DESTDIR=${IMAGE} make install.man || die "Failed to install documentation"
+    fi
+
+    default || die "Failed to install"
+    }

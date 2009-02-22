@@ -1,0 +1,18 @@
+Source: Gaute Hope <eg@gaute.vetsj.com>
+Upstream: no
+Reason: Install stuff in a standard location.
+diff -ru old/Makefile new/Makefile
+--- old/Makefile	1991-04-09 16:49:52.000000000 +0000
++++ new/Makefile	2009-02-22 20:23:03.000000000 +0000
+@@ -21,9 +21,9 @@
+            RM_CMD = $(RM) *.CKP *.ln *.BAK *.bak *.o core errs ,* *~ *.a .emacs_* tags TAGS make.log MakeOut
+          IRULESRC = $(CONFIGDIR)
+         IMAKE_CMD = $(IMAKE) -DUseInstalled -I$(IRULESRC) $(IMAKE_DEFINES)
+-           BINDIR = $(DESTDIR)/usr/bin/X11
++           BINDIR = $(DESTDIR)/usr/bin
+           INCROOT = $(DESTDIR)/usr/include
+-          MANPATH = $(DESTDIR)/usr/catman/x11_man
++          MANPATH = $(DESTDIR)/usr/share/man
+     MANSOURCEPATH = $(MANPATH)/man
+            MANDIR = $(MANSOURCEPATH)1
+             IMAKE = imake

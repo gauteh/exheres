@@ -20,7 +20,7 @@ DEPENDENCIES="
 
 src_prepare () {
 
-    expatch ${FILES}/00-fix_getenv.patch
+    expatch ${FILES}/00-fix_getenv.patch || die "Could not patch"
 
     # fix prefixes
     sed -e "s:/usr/share/wbar:${IMAGE}usr/share/wbar:" \
