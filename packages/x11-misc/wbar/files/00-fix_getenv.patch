@@ -1,0 +1,21 @@
+diff -ru old/IconLoader.cc new/IconLoader.cc
+--- old/IconLoader.cc	2006-12-29 01:54:29.000000000 +0000
++++ new/IconLoader.cc	2009-02-22 16:11:24.000000000 +0000
+@@ -2,6 +2,7 @@
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <stdlib.h>
+ };
+ 
+ #include "IconLoader.h"
+diff -ru old/SuperBar.cc new/SuperBar.cc
+--- old/SuperBar.cc	2007-08-04 00:24:34.000000000 +0000
++++ new/SuperBar.cc	2009-02-22 16:12:26.000000000 +0000
+@@ -1,5 +1,6 @@
+ #include "SuperBar.h"
+ #include "SuperIcon.h"
++#include <stdlib.h>
+ 
+ using namespace std;
+ 

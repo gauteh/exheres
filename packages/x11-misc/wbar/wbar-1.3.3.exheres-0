@@ -1,0 +1,35 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="wbar is a quick launch bar."
+DESCRIPTION="A fast launch bar with cool eye candy, written in c++ using imlib2. Very lite and fast.
+"
+
+HOMEPAGE="http://code.google.com/p/wbar/"
+DOWNLOADS="http://www.tecapli.com.ar/warlock/${PNV}.tbz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        >=media-libs/imlib2-1.4.1
+        "
+
+src_prepare () {
+
+    expatch ${FILES}/00-fix_getenv.patch
+
+    # fix prefixes
+    sed -e "s:/usr/share/wbar:${IMAGE}usr/share/wbar:" \
+        -i Makefile || die "Could not set prefix"
+
+    sed -e "s:install ./wbar /usr/bin:install -D ./wbar ${IMAGE}usr/bin/wbar:" \
+        -i Makefile || die "Could not set prefix"
+
+    # fix symlinks
+    sed -e "s:ln -fs:cp:" -i Makefile || die "Could not fix symlinks"
+
+}

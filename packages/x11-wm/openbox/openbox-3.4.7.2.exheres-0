@@ -1,4 +1,4 @@
-# from rbrown.git
+# Shamlessly stolen from exherbo/rbrown.git
 
 SUMMARY="Openbox is a highly configurable, next generation window manager with extensive standards support."
 HOMEPAGE="http://icculus.org/openbox/index.php/Main_Page"
