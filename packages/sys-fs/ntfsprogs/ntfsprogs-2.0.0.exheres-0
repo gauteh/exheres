@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 SUMMARY="Userspace tools for the NTFS filesystem"
-DESCRIPTION="
-"
+
 HOMEPAGE="http://www.linux-ntfs.org/doku.php?id=ntfsprogs"
 DOWNLOADS="mirror://sourceforge/linux-ntfs/${PNV}.tar.bz2"
 
@@ -26,3 +25,4 @@ DEPENDENCIES="
 "
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( ntfsmount crypto gnomevfs )
+

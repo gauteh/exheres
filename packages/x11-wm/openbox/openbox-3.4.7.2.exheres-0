@@ -1,5 +1,8 @@
-# Shamlessly stolen from exherbo/rbrown.git
-
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+#
+# Based on openbox-3.4.7.2.exheres-0 (C) Richard Brown: git://git.exherbo.org/dev/rbrown.git
+ 
 SUMMARY="Openbox is a highly configurable, next generation window manager with extensive standards support."
 HOMEPAGE="http://icculus.org/openbox/index.php/Main_Page"
 DOWNLOADS="http://icculus.org/openbox/releases/${PNV}.tar.gz"
@@ -7,7 +10,7 @@ DOWNLOADS="http://icculus.org/openbox/releases/${PNV}.tar.gz"
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~ia64 ~ppc64 ~x86 "
-MYOPTIONS="nls startup-notification xinerama"
+MYOPTIONS="nls startup-notification xinerama xcursor"
 
 DEPENDENCIES="
     run:
@@ -22,6 +25,7 @@ DEPENDENCIES="
         startup-notification? ( x11-libs/startup-notification )
         xinerama? ( x11-proto/xineramaproto )
     build+run:
+        xcursor? ( x11-libs/libXcursor )
         dev-util/pkg-config
         x11-proto/xextproto
         x11-proto/xf86vidmodeproto
@@ -29,7 +33,7 @@ DEPENDENCIES="
 "
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(  )
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( nls startup-notification )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( nls startup-notification xcursor )
 
 src_install() {
     dodir /etc/X11/Sessions
