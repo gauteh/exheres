@@ -19,7 +19,7 @@ DOWNLOADS="http://ftp.x.org/contrib/utilities/${PNV}.tar.Z"
 LICENCES="public-domain"
 SLOT="0"
 PLATFORMS="~x86"
-MYOPTIONS="doc"
+MYOPTIONS=""
 
 WORK=${WORKBASE}/${PN}
 
@@ -36,10 +36,8 @@ src_prepare () {
 src_install () {
     mkdir -p ${IMAGE}usr/bin || die "Could not create install dir."
     
-    if optionq "doc"; then
-        mkdir -p ${IMAGE}usr/share/man/man1 || die "Failed to create man dir."
-        DESTDIR=${IMAGE} make install.man || die "Failed to install documentation"
-    fi
+    mkdir -p ${IMAGE}usr/share/man/man1 || die "Failed to create man dir."
+    DESTDIR=${IMAGE} make install.man || die "Failed to install documentation"
 
     default || die "Failed to install"
     }

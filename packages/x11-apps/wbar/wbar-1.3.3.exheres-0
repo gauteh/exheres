@@ -6,8 +6,7 @@ DESCRIPTION="A fast launch bar with cool eye candy, written in c++ using imlib2.
 "
 
 HOMEPAGE="http://code.google.com/p/wbar/"
-DOWNLOADS="http://www.tecapli.com.ar/warlock/${PNV}.tbz2"
-
+DOWNLOADS="http://${PN}.googlecode.com/files/${PNV}.tbz2"
 LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~x86"
