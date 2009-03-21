@@ -1,0 +1,17 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="decoder for the musepack codec"
+
+HOMEPAGE="http://musepack.net/"
+DOWNLOADS="http://files.musepack.net/source/${PNV}.tar.bz2"
+
+LICENCES="BSD"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+       "
+
+    
