@@ -1,0 +1,49 @@
+Source: Gaute Hope (c) <eg@gaute.vetsj.com> 
+Upstream: Issue 22
+Reason: Support DESTDIR, Copy, not symlink. Install as non-root works
+diff -ru old/Makefile new/Makefile
+--- old/Makefile	2007-09-26 16:24:10.000000000 +0000
++++ new/Makefile	2009-03-22 09:27:06.000000000 +0000
+@@ -1,7 +1,7 @@
+ TARGET=wbar
+ CXXFLAGS=`imlib2-config --cflags` -Wall -O2 #-DCOS_ZOOM #-DLINEAR_TRASL -DNO_EXPAND #-DAVGFILTER
+ LDFLAGS=`imlib2-config --libs`  -Wl,-O2
+-PREFIX=/usr/share/wbar
++PREFIX=$(DESTDIR)/share/wbar
+ 
+ 	
+ sources= XWin.cc Icon.cc Bar.cc IconLoader.cc \
+@@ -18,11 +18,6 @@
+ 	#strip $(@)
+ 
+ install: $(TARGET)
+-	if [ "`whoami`" != "root" ]; then \
+-		echo "You must be root to install"; \
+-		exit 1; \
+-	fi
+-
+ 	install -d $(PREFIX)
+ 	awk '{if($$1 ~ /i:/ || ($$1 ~ /t:/ && NR<4)) print $$1" $(PREFIX)/"$$2; else print $$0;}' \
+ 		./dot.wbar > $(PREFIX)/dot.wbar
+@@ -30,18 +25,13 @@
+ 
+ 	#ln -fs $(PREFIX)/iconpack/comic.ttf $(PREFIX)/iconpack/wbar.nuvoux/font.ttf
+ 	#ln -fs $(PREFIX)/iconpack/comic.ttf $(PREFIX)/iconpack/wbar.ice/font.ttf
+-	ln -fs $(PREFIX)/iconpack/comic.ttf $(PREFIX)/iconpack/wbar.osx/font.ttf
++	cp $(PREFIX)/iconpack/comic.ttf $(PREFIX)/iconpack/wbar.osx/font.ttf
+ 	
+-	install ./wbar /usr/bin
++	install -D ./wbar $(DESTDIR)/bin/wbar
+ 
+ uninstall:
+-	if [ "`whoami`" != "root" ]; then \
+-		echo "You must be root to install"; \
+-		exit 1; \
+-	fi
+-
+ 	rm -rf $(PREFIX)
+-	rm -f /usr/bin/wbar
++	rm -f $(DESTDIR)/bin/wbar
+ 
+ 
+ clean:
