@@ -1,42 +1,17 @@
 # Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="cmus is a console audio player"
-DESCRIPTION="cmus is a small and fast text mode music player for Linux and many other UNIX like operating systems."
+require cmus
 
-HOMEPAGE="http://cmus.sourceforge.net/"
 DOWNLOADS=""
 
 SCM_REPOSITORY="git://repo.or.cz/cmus.git"
 require scm-git
 
-LICENCES="GPL-2"
-SLOT="0"
 PLATFORMS="~x86"
-MYOPTIONS="flac mad modplug mikmod mpc vorbis tremor wav wavpack mp4 aac ffmpeg alsa ao arts oss audioscrobbler [[ description = [ Apply Audioscrobbler/Last.fm patch from http://www.hci-matters.com/blog/2008/05/06/c-music-player-audioscrobblerlastfm-patch/ ] ]]"
 
-DEPENDENCIES="
-    build+run:
-        sys-libs/ncurses
+MYOPTIONS="audioscrobbler [[ description = [ Apply Audioscrobbler/Last.fm patch from http://www.hci-matters.com/blog/2008/05/06/c-music-player-audioscrobblerlastfm-patch/ ] ]]"
 
-        flac? ( media-libs/flac ) 
-        mad? ( media-libs/libmad ) 
-        modplug? ( media-libs/libmodplug )
-        mikmod? ( media-libs/mikmod )
-        mpc? ( media-libs/libmpcdec )
-        vorbis? ( media-libs/libvorbis )
-        tremor? ( media-libs/tremor )
-
-        wavpack? ( media-sound/wavpack )
-        mp4? ( media-sound/mpeg4ip )
-
-        ffmpeg? ( <=media/ffmpeg-0.4.9_pre1_p20090220 )
-        ao? ( media-libs/libao )
-        alsa? ( sys-sound/alsa-lib )
-        arts? ( kde/kdemultimedia )
-
-        aac? ( media-libs/faad2 )
-        "
 src_prepare () {
     default
 
@@ -45,21 +20,4 @@ src_prepare () {
         patch < ${FILES}/cmus_audioscrobbler.patch || die "Could not patch!"
     fi
 }
-
     
-src_configure () {
-    pflags="flac mad modplug mikmod mpc vorbis tremor wav wavpack mp4 aac ffmpeg alsa ao arts oss"
-    flags=""
-
-    # CONFIG_OPTION=VALUE
-    for f in $(echo ${pflags}); do
-        if optionq "$f" ;  then
-            flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=y"
-        else
-            flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=n"
-        fi
-    done
-
-    ./configure ${flags}
-}
-

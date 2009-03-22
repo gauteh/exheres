@@ -1,0 +1,59 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="cmus is a console audio player"
+DESCRIPTION="cmus is a small and fast text mode music player for Linux and many other UNIX like operating systems."
+
+HOMEPAGE="http://cmus.sourceforge.net/"
+DOWNLOADS="http://mirror.greaterscope.net/cmus/${PNV}.tar.bz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+
+DOWNLOADS="http://mirror.greaterscope.net/cmus/${PNV}.tar.bz2"
+
+MYOPTIONS="flac mad modplug mikmod mpc vorbis tremor wav wavpack mp4 aac ffmpeg alsa ao arts oss"
+
+DEPENDENCIES="
+    build:
+        ffmpeg? ( <=media/ffmpeg-0.4.9_pre1_p20090220 )
+    run:
+        ffmpeg? ( media/ffmpeg )
+
+    build+run:
+        sys-libs/ncurses
+
+        flac? ( media-libs/flac ) 
+        mad? ( media-libs/libmad ) 
+        modplug? ( media-libs/libmodplug )
+        mikmod? ( media-libs/mikmod )
+        mpc? ( media-libs/libmpcdec )
+        vorbis? ( media-libs/libvorbis )
+        tremor? ( media-libs/tremor )
+
+        wavpack? ( media-sound/wavpack )
+        mp4? ( media-sound/mpeg4ip )
+
+        ao? ( media-libs/libao )
+        alsa? ( sys-sound/alsa-lib )
+        arts? ( kde/kdemultimedia )
+
+        aac? ( media-libs/faad2 )
+        "
+
+src_configure () {
+    pflags="flac mad modplug mikmod mpc vorbis tremor wav wavpack mp4 aac ffmpeg alsa ao arts oss"
+    flags=""
+
+    # CONFIG_OPTION=VALUE
+    for f in $(echo ${pflags}); do
+        if optionq "$f" ;  then
+            flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=y"
+        else
+            flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=n"
+        fi
+    done
+
+    ./configure ${flags}
+}
+
