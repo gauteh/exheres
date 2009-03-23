@@ -17,4 +17,4 @@ DEPENDENCIES="
         >=media-libs/imlib2-1.4.1
         "
 
-DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-fix_getenv.patch ${FILES}/01-fix-makefile.patch)
+DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/{00-fix_getenv.patch,01-fix-makefile.patch})
