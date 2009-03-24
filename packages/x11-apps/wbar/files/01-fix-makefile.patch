@@ -9,7 +9,7 @@ diff -ru old/Makefile new/Makefile
  CXXFLAGS=`imlib2-config --cflags` -Wall -O2 #-DCOS_ZOOM #-DLINEAR_TRASL -DNO_EXPAND #-DAVGFILTER
  LDFLAGS=`imlib2-config --libs`  -Wl,-O2
 -PREFIX=/usr/share/wbar
-+PREFIX=$(DESTDIR)/share/wbar
++PREFIX=$(DESTDIR)/usr/share/wbar
  
  	
  sources= XWin.cc Icon.cc Bar.cc IconLoader.cc \
@@ -33,7 +33,7 @@ diff -ru old/Makefile new/Makefile
 +	cp $(PREFIX)/iconpack/comic.ttf $(PREFIX)/iconpack/wbar.osx/font.ttf
  	
 -	install ./wbar /usr/bin
-+	install -D ./wbar $(DESTDIR)/bin/wbar
++	install -D ./wbar $(DESTDIR)/usr/bin/wbar
  
  uninstall:
 -	if [ "`whoami`" != "root" ]; then \
@@ -43,7 +43,7 @@ diff -ru old/Makefile new/Makefile
 -
  	rm -rf $(PREFIX)
 -	rm -f /usr/bin/wbar
-+	rm -f $(DESTDIR)/bin/wbar
++	rm -f $(DESTDIR)/usr/bin/wbar
  
  
  clean:
