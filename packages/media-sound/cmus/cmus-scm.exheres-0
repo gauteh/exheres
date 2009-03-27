@@ -16,8 +16,6 @@ src_prepare () {
     default
 
     if optionq "audioscrobbler"; then
-        cd ${WORK}
-        patch < ${FILES}/cmus_audioscrobbler.patch || die "Could not patch!"
+        expatch  "${FILES}/cmus_audioscrobbler.patch"
     fi
 }
-    
