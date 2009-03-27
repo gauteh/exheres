@@ -15,7 +15,7 @@ MYOPTIONS="audioscrobbler [[ description = [ Apply Audioscrobbler/Last.fm patch 
 src_prepare () {
     default
 
-    if optionq "audioscrobbler"; then
+    if option "audioscrobbler"; then
         expatch  "${FILES}/cmus_audioscrobbler.patch"
     fi
 }

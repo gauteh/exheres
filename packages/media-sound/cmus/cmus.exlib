@@ -1,7 +1,7 @@
 # Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
 # Distributed under the terms of the GNU General Public License v2
 
-SUMMARY="cmus is a console audio player"
+SUMMARY="A console audio player"
 DESCRIPTION="cmus is a small and fast text mode music player for Linux and many other UNIX like operating systems."
 
 HOMEPAGE="http://cmus.sourceforge.net/"
@@ -10,9 +10,8 @@ DOWNLOADS="http://mirror.greaterscope.net/cmus/${PNV}.tar.bz2"
 LICENCES="GPL-2"
 SLOT="0"
 
-DOWNLOADS="http://mirror.greaterscope.net/cmus/${PNV}.tar.bz2"
 
-MYOPTIONS="flac mad modplug mikmod mpc vorbis tremor wav wavpack mp4 aac ffmpeg alsa ao arts oss"
+MYOPTIONS="aac alsa ao arts ffmpeg flac mad mikmod modplug mp4 mpc oss tremor vorbis wav wavpack"
 
 DEPENDENCIES="
     build:
@@ -20,28 +19,31 @@ DEPENDENCIES="
     run:
         ffmpeg? ( media/ffmpeg )
     build+run:
-        alsa? ( sys-sound/alsa-lib )
-        ao? ( media-libs/libao )
         arts? ( kde/kdemultimedia )
+
+        aac? ( media-libs/faad2 )
         flac? ( media-libs/flac )
+        ao? ( media-libs/libao )
         mad? ( media-libs/libmad )
-        mikmod? ( media-libs/mikmod )
         modplug? ( media-libs/libmodplug )
-        mp4? ( media-sound/mpeg4ip )
         mpc? ( media-libs/libmpcdec )
-        sys-libs/ncurses
+        mikmod? ( media-libs/mikmod )
         tremor? ( media-libs/tremor )
         vorbis? ( media-libs/libvorbis )
+
+        mp4? ( media-sound/mpeg4ip )
         wavpack? ( media-sound/wavpack )
-        aac? ( media-libs/faad2 )
+
+        sys-libs/ncurses
+        alsa? ( sys-sound/alsa-lib )
         "
 
 src_configure () {
-    flags=""
+    local flags=""
 
     # CONFIG_OPTION=VALUE
-    for f in alsa ao arts ffmpeg mad mikmod modplug mp4 mpc oss flac tremor vorbis wav wavpack aac ; do
-        if optionq "$f" ;  then
+    for f in aac alsa ao arts ffmpeg flac mad mikmod modplug mp4 mpc oss tremor vorbis wav wavpack ; do
+        if option "$f" ;  then
             flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=y"
         else
             flags="${flags} CONFIG_$(echo ${f} | tr [:lower:] [:upper:])=n"
