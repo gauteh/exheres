@@ -1,3 +1,6 @@
+Source: Gaute Hope (c) <eg@gaute.vetsj.com>
+Upstream: No
+Reason: Set prefix, prepare for dynamic configuration by exheres
 diff -ru old/config.mk new/config.mk
 --- old/config.mk	2009-02-08 21:52:37.000000000 +0000
 +++ new/config.mk	2009-03-31 08:20:59.000000000 +0000
