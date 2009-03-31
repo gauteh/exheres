@@ -18,7 +18,7 @@ MYOPTIONS="
 
 DEPENDENCIES="
     build+run:
-        sys-libs/ncurses
+        sys-libs/ncurses[unicode?]
         "
 
 DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-preconfigure.patch)
