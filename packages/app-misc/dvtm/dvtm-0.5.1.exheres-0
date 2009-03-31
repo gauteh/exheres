@@ -1,0 +1,41 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="Tiling window management for the console"
+DESCRIPTION="dvtm brings the concept of tiling window management, popularized by X11-window managers like dwm to the console. As a console window manager it tries to make it easy to work with multiple console based programs like vim, mutt, cmus or irssi.
+"
+HOMEPAGE="http://www.brain-dump.org/projects/dvtm/"
+DOWNLOADS="http://www.brain-dump.org/projects/${PN}/${PNV}.tar.gz"
+
+LICENCES="MIT X11"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="
+        mouse 
+        statusbar 
+        cmdfifo
+        unicode"
+
+DEPENDENCIES="
+    build+run:
+        sys-libs/ncurses
+        "
+
+DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-preconfigure.patch)
+
+src_configure () {
+    default
+
+    for f in mouse statusbar cmdfifo; do
+        if option "${f}"; then
+            echo "CFLAGS += -DCONFIG_$(echo ${f} | tr [:lower:] [:upper:])" >> ./config.mk || die "Failed to configure!"
+        fi
+    done 
+
+    if option "unicode"; then
+        echo "LIBS = -lc -lutil -lncursesw" >> ./config.mk || die "Failed to configure!"
+    else
+        echo "LIBS = -lc -lutil -lncurses" >> ./config.mk || die "Failed to configure!"
+    fi
+}
+

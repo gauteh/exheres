@@ -1,0 +1,30 @@
+diff -ru old/config.mk new/config.mk
+--- old/config.mk	2009-02-08 21:52:37.000000000 +0000
++++ new/config.mk	2009-03-31 08:20:59.000000000 +0000
+@@ -3,20 +3,22 @@
+ 
+ # Customize below to fit your system
+ 
+-PREFIX = /usr/local
++PREFIX = /usr
+ MANPREFIX = ${PREFIX}/share/man
+ 
+ INCS = -I. -I/usr/include -I/usr/local/include 
+-LIBS = -lc -lutil -lncursesw
++#LIBS = -lc -lutil -lncursesw
+ #LIBS = -lc -lutil -lncurses
+ 
+ CFLAGS += -std=c99 -Os ${INCS} -DVERSION=\"${VERSION}\" -DNDEBUG
+ LDFLAGS += -L/usr/lib -L/usr/local/lib ${LIBS}
+ 
++# gauteh: To be added by package
++#
+ # Mouse handling
+-CFLAGS += -DCONFIG_MOUSE
++#CFLAGS += -DCONFIG_MOUSE
+ #CFLAGS += -DCONFIG_CMDFIFO
+-CFLAGS += -DCONFIG_STATUSBAR
++#CFLAGS += -DCONFIG_STATUSBAR
+ 
+ DEBUG_CFLAGS = ${CFLAGS} -UNDEBUG -O0 -g -ggdb -Wall
+ 
