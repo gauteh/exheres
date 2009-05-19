@@ -9,12 +9,14 @@ DOWNLOADS="http://dillo.org/download/${PNV}.tar.bz2"
 
 LICENCES="GPL-3"
 SLOT="0"
-MYOPTIONS="ipv6 efence insure ansi cookies png jpeg gif ssl threaded-dns rtfl"
+MYOPTIONS="ipv6 cookies png jpeg gif ssl threaded-dns rtfl"
 
 DEPENDENCIES="
+    build:
+        sys-devel/gcc:4.3
     build+run:
         x11-libs/libX11 
-        x11-libs/fltk[>=2.0x-p6403&<=2.0x-p6525][-cairo]
+        x11-libs/fltk:2[>=2.0x-p6403][-cairo]
         png? ( media-libs/libpng )
         jpeg? ( media-libs/jpeg )
         ssl? ( dev-libs/openssl )
@@ -22,4 +24,9 @@ DEPENDENCIES="
 
 BUGS_TO=""
 
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(ipv6 efence insure ansi cookies png jpeg gif ssl threaded-dns rtfl)
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(ipv6 cookies png jpeg gif ssl threaded-dns rtfl)
+
+src_prepare () {
+    ewarn "Dillo seems to need gcc 4.3 to compile!"
+    default
+}
