@@ -1,0 +1,21 @@
+# Distributed under the GNU General Public Licence v2
+# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+
+require dillo
+require scm
+
+DOWNLOADS=""
+SCM_REPOSITORY="http://hg.dillo.org/dillo"
+require scm-hg
+
+PLATFORMS="~x86"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/fltk[>=2.0x-p6525][-cairo]"
+
+src_configure() {
+    cd ${WORK}
+    ./autogen.sh || die "Could not run autogen.sh!"
+    default
+}

@@ -1,0 +1,25 @@
+# Distributed under the GNU General Public Licence v2
+# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+
+SUMMARY="A multi-platform, small and fast web browser based on FLTK2 written in C and C++"
+DESCRIPTION="
+"
+HOMEPAGE="http://www.dillo.org"
+DOWNLOADS="http://dillo.org/download/${PNV}.tar.bz2"
+
+LICENCES="GPL-3"
+SLOT="0"
+MYOPTIONS="ipv6 efence insure ansi cookies png jpeg gif ssl threaded-dns rtfl"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/libX11 
+        x11-libs/fltk[>=2.0x-p6403&<=2.0x-p6525][-cairo]
+        png? ( media-libs/libpng )
+        jpeg? ( media-libs/jpeg )
+        ssl? ( dev-libs/openssl )
+        sys-libs/zlib"
+
+BUGS_TO=""
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(ipv6 efence insure ansi cookies png jpeg gif ssl threaded-dns rtfl)
