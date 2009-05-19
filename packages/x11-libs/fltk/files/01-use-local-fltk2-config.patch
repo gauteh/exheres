@@ -1,0 +1,15 @@
+Source: Gaute Hope (c) 2009 <eg@gaute.vetsj.com>, GPL-2
+Reason: Use newly built fltk2-config in main source dir
+Upstream: No
+diff -ru old/fluid/Makefile new/fluid/Makefile
+--- old/fluid/Makefile	2008-08-04 23:03:58.000000000 +0000
++++ new/fluid/Makefile	2009-05-19 19:05:07.000000000 +0000
+@@ -134,7 +134,7 @@
+ 	-$(MKDIR) $(DESTDIR)$(bindir)
+ 	$(CP) $(FLUID) $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 	$(STRIP) $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+-	$(bindir)/fltk2-config --post $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
++	../fltk2-config --post $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 	$(CHMOD) 755 $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 
+ 

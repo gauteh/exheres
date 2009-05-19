@@ -1,0 +1,6 @@
+# Distributed under the GNU General Public Licence v2
+# Copyright Gaute Hope (c) 2009 <eg@gaute.vetsj.com>
+
+require fltk
+
+PLATFORMS="~x86"
