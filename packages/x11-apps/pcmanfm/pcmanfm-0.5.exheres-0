@@ -18,8 +18,8 @@ MYOPTIONS="gamin
 
 DEPENDENCIES="
     build+run:
-        >=x11-libs/gtk+-2.6
-        >=dev-libs/glib-2.10
+        x11-libs/gtk+[>=2.6]
+        dev-libs/glib[>=2.10]
 
         gamin? ( app-admin/gamin )
 

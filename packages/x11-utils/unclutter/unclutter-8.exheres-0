@@ -25,19 +25,19 @@ WORK=${WORKBASE}/${PN}
 
 DEPENDENCIES="
     build+run:
-        >=x11-libs/libX11-1.1.5"
+        x11-libs/libX11[>=1.1.5]"
 
 src_prepare () {
     default
-    
+
     expatch ${FILES}/00-fix_Makefile.patch || die "Failed to patch Makefile."
     }
 
 src_install () {
     mkdir -p ${IMAGE}usr/bin || die "Could not create install dir."
-    
+
     mkdir -p ${IMAGE}usr/share/man/man1 || die "Failed to create man dir."
     DESTDIR=${IMAGE} make install.man || die "Failed to install documentation"
 
     default || die "Failed to install"
-    }
+}

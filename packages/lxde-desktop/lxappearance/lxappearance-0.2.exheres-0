@@ -13,6 +13,6 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     build+run:
-        >=x11-libs/gtk+-2.0.0
+        x11-libs/gtk+[>=2.0.0]
     "
 

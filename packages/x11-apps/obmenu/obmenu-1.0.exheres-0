@@ -17,8 +17,8 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     build+run:
-        >=dev-lang/python-2.3
-        >=gnome-bindings/pygtk-2.6
-        >=gnome-bindings/gnome-python-2.6
+        dev-lang/python[>=2.3]
+        gnome-bindings/pygtk[>=2.6]
+        gnome-bindings/gnome-python[>=2.6]
 "
 
