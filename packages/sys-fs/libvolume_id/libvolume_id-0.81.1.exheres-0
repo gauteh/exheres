@@ -1,0 +1,21 @@
+# Copyright 2009 (c) Gaute Hope <eg@gaute.vetsj.com>
+# Based in part upon libvolume_id ebuild (c) Gentoo foundation
+# Distributed under the terms of the GNU Genral Public Licence v2
+
+SUMMARY="Library to provide file system information"
+
+HOMEPAGE="http://marcuscom.com"
+DOWNLOADS="http://marcuscom.com/downloads/${PNV}.tar.bz2"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES=""
+
+BUGS_TO=""
+
+src_compile() {
+    make E="@echo" RANLIB=ranlib AR=ar Q=@
+}
