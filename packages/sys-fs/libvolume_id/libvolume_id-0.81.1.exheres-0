@@ -19,3 +19,7 @@ BUGS_TO=""
 src_compile() {
     make E="@echo" RANLIB=ranlib AR=ar Q=@
 }
+
+src_install() {
+    make DESTDIR=${IMAGE} prefix=/usr install
+}
