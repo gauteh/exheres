@@ -2,6 +2,8 @@
 # Based in part upon libvolume_id ebuild (c) Gentoo foundation
 # Distributed under the terms of the GNU Genral Public Licence v2
 
+require multilib
+
 SUMMARY="Library to provide file system information"
 
 HOMEPAGE="http://marcuscom.com"
@@ -16,11 +18,18 @@ DEPENDENCIES=""
 
 BUGS_TO=""
 
-src_compile() {
-    make prefix=/usr E="@echo" RANLIB=ranlib AR=ar Q=@
+DEFAULT_SRC_COMPILE_PARAMS=( "prefix=/usr" "E=@echo" "RANLIB=ranlib" "AR=ar" "Q=@" )
+DEFAULT_SRC_INSTALL_PARAMS=( "DESTDIR=\"${IMAGE}\"" "prefix=/usr" )
+
+src_prepare() {
+    sed -i \
+        -e "/^libdir/s:lib$:$(get_libdir):" \
+        -e "/^usrlibdir/s:lib$:$(get_libdir):" \
+        "${WORK}"/Makefile || die "Sed failed"
 }
 
 src_install() {
-    make DESTDIR=${IMAGE} prefix=/usr install
+    default
+
     dolib libvolume_id.a
 }
