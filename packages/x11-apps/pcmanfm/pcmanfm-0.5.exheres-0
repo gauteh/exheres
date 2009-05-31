@@ -9,7 +9,7 @@ HOMEPAGE="http://pcmanfm.sourceforge.net/"
 DOWNLOADS="mirror://sourceforge/${PN}/${PNV}.tar.gz"
 LICENCES="GPL"
 SLOT="0"
-PLATFORMS="~x86"
+PLATFORMS="~x86 ~amd64"
 MYOPTIONS="gamin
            hal
            inotify
