@@ -8,7 +8,7 @@ DESCRIPTION="
 HOMEPAGE="http://wmii.suckless.org"
 DOWNLOADS="http://code.suckless.org/dl/wmii/${PNV}.tar.gz"
 
-LICENCES="AS-IS"
+LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~x86"
 MYOPTIONS="plan9 [[ description = [ Use plan9 for runtime scripts - is determined at runtime ] ]]"
