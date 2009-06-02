@@ -1,0 +1,56 @@
+# Copyright 2009 (c) Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+# Based in part upon Gentoo ebuild (c) Gentoo Foundation
+
+SUMMARY="wmii is a small, dynamic window manager for X11"
+DESCRIPTION="
+"
+HOMEPAGE="http://wmii.suckless.org"
+DOWNLOADS="http://code.suckless.org/dl/wmii/${PNV}.tar.gz"
+
+LICENCES="AS-IS"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="plan9 [[ description = [ Use plan9 for runtime scripts - is determined at runtime ] ]]"
+
+DEPENDENCIES="
+    build:
+        x11-proto/xproto
+    build+run:
+        x11-libs/libX11
+        sys-fs/libixp[=0.4]
+    run:
+        plan9? ( sys-fs/plan9port )
+        x11-misc/dmenu
+"
+
+BUGS_TO=""
+
+src_configure() {
+    sed -i \
+        -e '/^PREFIX/s|/usr/local|${IMAGE}/usr|' \
+        -e '/^ETC/s|=.*|= ${IMAGE}/etc|' \
+        -e '/^LIBDIR/s|= .*|= /usr/lib|' \
+        config.mk || die "sed failed!"
+}
+
+src_compile() {
+    emake -j1 || die "make failed!"
+}
+
+src_install() {
+    default
+    rm -rf ${IMAGE}/usr/include
+
+    # Get rid of build paths
+    sed -i -e "s|${IMAGE}||g" "${IMAGE}/usr/bin/wmiistartrc" || die "sed failed!"
+
+    # Create X11 session
+    echo "/usr/bin/wmii" > ${TEMP}/wmii
+    exeinto /etc/X11/Sessions
+    doexe ${TEMP}/wmii
+
+    insinto /usr/share/xsessions
+    doins ${FILES}/wmii.desktop
+}
+
