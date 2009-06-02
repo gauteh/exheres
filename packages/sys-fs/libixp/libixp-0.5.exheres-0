@@ -1,0 +1,33 @@
+# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+# Based in part upon libixp-0.4.ebuild (c) Gentoo Foundation
+
+SUMMARY="libixp is a stand-alone client/server 9P library including ixpc client."
+DESCRIPTION="
+"
+HOMEPAGE="http://libs.suckless.org/libixp"
+DOWNLOADS="http://code.suckless.org/dl/libs/${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES=""
+
+BUGS_TO=""
+
+src_configure() {
+    sed -i \
+        -e '/^PREFIX/s:/usr/local:${IMAGE}/usr:' \
+        -e '/^ETC/s|=.*|= ${IMAGE}/etc|' \
+        -e '/^CFLAGS/s|=|+=|' \
+        -e '/^LDFLAGS/s|=|+=|' \
+        config.mk || die "sed failed!"
+}
+
+src_install() {
+    default
+    rm -rf ${IMAGE}/usr/etc
+}
+
