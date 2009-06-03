@@ -1,0 +1,80 @@
+# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="Plan 9 from User Space (aka plan9port) is a port of many Plan 9 programs from their native Plan 9  environment to Unix-like operating systems. "
+DESCRIPTION="
+"
+HOMEPAGE="http://swtch.com/plan9port/"
+DOWNLOADS="http://swtch.com/${PN}/${PNV}.tgz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/libX11
+        x11-proto/xproto"
+
+BUGS_TO=""
+
+WORK=${WORKBASE}/plan9
+
+src_configure() {
+    :
+}
+
+src_compile() {
+    einfo ""
+    einfo "Building Plan9 from User Space, this could take a while.."
+    einfo ""
+
+    ./INSTALL -b || die "build failed!"
+}
+
+src_install() {
+    einfo ""
+    einfo "Recalibrating Plan9 from User Space for its new path.."
+    einfo ""
+
+    # Make move script use our install path 
+    sed -i -e "/^new/s|=.*|=/usr/lib/plan9|" lib/moveplan9.sh || die "sed failed!"
+
+    dodir /usr/lib/plan9
+    mv "${WORK}" "${IMAGE}/usr/lib/"
+
+    cd "${IMAGE}/usr/lib/plan9"
+    ./INSTALL -c || die "install failed!"
+
+    doenvd ${FILES}/30plan9
+
+    # Remove all unnecessary and empty directories
+    cd ${IMAGE}/usr/lib/plan9
+
+    rm -rf ./{INSTALL,configure,install.log,install.sum,install.txt,Makefile,README,TODO}
+
+    rm -rf 9pm/Plan9/386/lib
+    rm -rf 9pm/{src,Windows}
+    rm -rf bin/{lpbin,venti,fs}
+    rm -rf {dist,unix,src}
+
+    find ./ -name CVS | xargs rm -rf
+    find ./ -name CVS* | xargs rm -rf
+    find ./ -name .cvsignore | xargs rm -rf
+    rm .*cvs*
+
+    find ./ -name Makefile | xargs rm -rf
+    find ./ -name mkfile | xargs rm -rf
+
+    # we want to keep these
+    touch log/.keep
+    touch mail/queue/.keep
+
+    einfo ""
+    einfo "The Plan9 path has been appended to the end of your regular"
+    einfo "path, so in cases of conflicting command names you will"
+    einfo "either have to use the full pathname of the executable"
+    einfo "or use the '9' command, i.e.: 9 troff"
+    einfo ""
+}
