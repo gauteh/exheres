@@ -1,0 +1,46 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="Tools needed for syncing and building chromium"
+DESCRIPTION="Tools used to build the chronium project, these does not necessarily make sense, or behave correctly, when used somewhere else. Use with caution.
+"
+
+HOMEPAGE="http://dev.chromium.org/developers/how-tos/depottools"
+DOWNLOADS="http://src.chromium.org/svn/trunk/tools/depot_tools.tar.gz"
+
+LICENCES="BSD"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+        dev-lang/python
+        dev-scm/subversion
+"
+
+BUGS_TO=""
+
+WORK="${WORKBASE}/depot_tools"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/00-fix-wrapper-scripts.patch" )
+
+src_install() {
+    cd "${WORK}"
+
+    find ./ -name .svn | xargs rm -rf
+
+    dodir /usr/share/depot_tools
+    dodir /usr/bin
+
+    insinto /usr/share/depot_tools
+    doins change-svn-wc-format.py chrome-update.py cpplint.py gclient.py gcl.py git-cl.py git-try.py presubmit_canned_checks.py PRESUBMIT.py presubmit_support.py revert.py trychange.py upload.py
+
+    cp -r tests ${IMAGE}/usr/share/depot_tools
+
+    insinto /usr/bin
+    dobin change-svn-wc-format chrome-update cpplint gcl gclient git-cl git-try hammer revert trychange upload
+
+    dodoc README
+}

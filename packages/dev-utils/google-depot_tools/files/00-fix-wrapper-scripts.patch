@@ -1,0 +1,179 @@
+Reason: Remove automatic update stuff and use custom install dir for pythons
+Author: Gaute Hope <eg@gaute.vetsj.com>
+Upstream: No
+diff -ruN depot_tools/change-svn-wc-format depot_tools-new/change-svn-wc-format
+--- depot_tools/change-svn-wc-format	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/change-svn-wc-format	2009-06-07 11:40:40.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/chrome-update depot_tools-new/chrome-update
+--- depot_tools/chrome-update	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/chrome-update	2009-06-07 11:45:56.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/cpplint depot_tools-new/cpplint
+--- depot_tools/cpplint	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/cpplint	2009-06-07 11:39:22.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/gcl depot_tools-new/gcl
+--- depot_tools/gcl	2009-05-20 13:01:51.000000000 +0000
++++ depot_tools-new/gcl	2009-06-07 11:39:00.000000000 +0000
+@@ -1,14 +1,10 @@
+ #!/bin/sh
+ # Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-base_dir=$(dirname "$0")
+-
+-# Use the batch file as an entry point if on cygwin.
+-if [ "${OSTYPE}" = "cygwin" ]; then
+-   ${base_dir}/gcl.bat $*
+-   exit
+-fi
+-
+-exec python "$base_dir/gcl.py" "$@"
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/gclient depot_tools-new/gclient
+--- depot_tools/gclient	2009-05-20 13:01:51.000000000 +0000
++++ depot_tools-new/gclient	2009-06-07 11:39:10.000000000 +0000
+@@ -1,27 +1,10 @@
+ #!/bin/sh
+ # Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file.
+ 
+-# This script will try to sync the bootstrap directories and then defer control.
+-
+-base_dir=$(dirname "$0")
++base_dir=/usr/share/depot_tools
+  
+-# Use the batch file as an entry point if on cygwin.
+-if [ "${OSTYPE}" = "cygwin" ]; then
+-   ${base_dir}/gclient.bat $*
+-   exit
+-fi
+-
+-
+-if [ "X$DEPOT_TOOLS_UPDATE" != "X0" -a -e "$base_dir/.svn" ]
+-then
+-  # Update the bootstrap directory to stay up-to-date with the latest
+-  # depot_tools.
+-  svn -q up "$base_dir/bootstrap"
+-
+-  # Then defer the control to the bootstrapper.
+-  exec "$base_dir/bootstrap/gclient.sh" "$@"
+-else
+-  exec python "$base_dir/gclient.py" "$@"
+-fi
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+Files depot_tools/gclient.pyc and depot_tools-new/gclient.pyc differ
+Files depot_tools/gcl.pyc and depot_tools-new/gcl.pyc differ
+diff -ruN depot_tools/git-cl depot_tools-new/git-cl
+--- depot_tools/git-cl	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/git-cl	2009-06-07 11:39:12.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/git-try depot_tools-new/git-try
+--- depot_tools/git-try	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/git-try	2009-06-07 11:39:15.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/revert depot_tools-new/revert
+--- depot_tools/revert	2009-04-30 16:20:38.000000000 +0000
++++ depot_tools-new/revert	2009-06-07 11:39:26.000000000 +0000
+@@ -1,5 +1,10 @@
+ #!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
+ 
+-base_dir=$(dirname "$0")
+-
+-exec python "$base_dir/revert.py" "$@"
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/trychange depot_tools-new/trychange
+--- depot_tools/trychange	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/trychange	2009-06-07 11:39:30.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+diff -ruN depot_tools/upload depot_tools-new/upload
+--- depot_tools/upload	1970-01-01 00:00:00.000000000 +0000
++++ depot_tools-new/upload	2009-06-07 11:39:39.000000000 +0000
+@@ -0,0 +1,10 @@
++#!/bin/sh
++# Copyright (c) 2009 The Chromium Authors. All rights reserved.
++# Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++
++base_dir=/usr/share/depot_tools
++ 
++me=$(basename $0)
++PYTHONPATH=$PYTHONPATH:${base_dir} python "${base_dir}/${me}.py" "$@"
+Files depot_tools/upload.pyc and depot_tools-new/upload.pyc differ
