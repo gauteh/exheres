@@ -5,8 +5,6 @@ SUMMARY="A small and modular cross-platform C++ GUI toolkit which supports OpenG
 DESCRIPTION="FLTK (pronounced \"fulltick\") is a cross-platform C++ GUI toolkit for UNIX®/Linux® (X11), Microsoft® Windows®, and MacOS® X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL® and its built-in GLUT emulation. FLTK is designed to be small and modular enough to be statically linked, but works fine as a shared library. FLTK also includes an excellent UI builder called FLUID that can be used to create applications in minutes."
 
 HOMEPAGE="http://fltk.org"
-myver="$(ever range 1-2).x-r$(ever range 4 | tr -d 'p')"
-DOWNLOADS="http://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/fltk/snapshots/${PN}-${myver}.tar.gz"
 
 LICENCES="GPL-2"
 SLOT="2"
@@ -40,9 +38,6 @@ DEPENDENCIES="
 
 BUGS_TO=""
 
-WORK=${WORKBASE}/${PN}-${myver}
-
-DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/01-use-local-fltk2-config.patch)
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
         "X x"
         debug
