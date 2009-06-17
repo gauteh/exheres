@@ -1,0 +1,43 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -493,17 +493,17 @@
+ 	echo "Installing libraries in $(DESTDIR)$(libdir)..."
+ 	-$(INSTALL_DIR) $(DESTDIR)$(libdir)
+ 	-$(INSTALL_DIR) $(DESTDIR)$(bindir)
+-	$(RM) $(DESTDIR)$(libdir)/$(LIBNAME)
++	$(RM) $(DESTDIR)$(libdir)/$(notdir $(LIBNAME))
+ 	$(INSTALL_LIB) $(LIBNAME) $(DESTDIR)$(libdir)
+ 	$(INSTALL_LIB) $(FLLIBNAME) $(DESTDIR)$(libdir)
+ 	$(INSTALL_LIB) $(IMGLIBNAME) $(DESTDIR)$(libdir)
+-	$(RANLIB) $(DESTDIR)$(libdir)/$(LIBNAME)
+-	$(RANLIB) $(DESTDIR)$(libdir)/$(FLLIBNAME)
++	$(RANLIB) $(DESTDIR)$(libdir)/$(notdir $(LIBNAME))
++	$(RANLIB) $(DESTDIR)$(libdir)/$(notdir $(FLLIBNAME))
+ 	if test x$(GLLIBNAME) != x; then \
+ 		$(INSTALL_LIB) $(GLLIBNAME) $(DESTDIR)$(libdir); \
+-		$(RANLIB) $(DESTDIR)$(libdir)/$(GLLIBNAME); \
++		$(RANLIB) $(DESTDIR)$(libdir)/$(notdir $(GLLIBNAME)); \
+ 	fi
+-	$(RANLIB) $(DESTDIR)$(libdir)/$(IMGLIBNAME)
++	$(RANLIB) $(DESTDIR)$(libdir)/$(notdir $(IMGLIBNAME))
+ 	if test x$(DSONAME) = xlibfltk.so.1.1; then\
+ 		$(RM) $(DESTDIR)$(libdir)/libfltk.so*;\
+ 		$(INSTALL_LIB) libfltk.so.1.1 $(DESTDIR)$(libdir); \
+@@ -631,7 +631,7 @@
+ 
+ uninstall:
+ 	echo "Uninstalling libraries..."
+-	$(RM) $(DESTDIR)$(libdir)/$(LIBNAME)
++	$(RM) $(DESTDIR)$(libdir)/$(notdir $(LIBNAME))
+ 	if test x$(DSONAME) = xlibfltk.so.1.1; then\
+ 		$(RM) $(DESTDIR)$(libdir)/libfltk.so*;\
+ 	fi
+@@ -652,7 +652,7 @@
+ 		$(RM) $(DESTDIR)$(bindir)/$(DSONAME); \
+ 		$(RM) $(DESTDIR)$(libdir)/libfltk.dll.a;\
+ 	fi
+-	$(RM) $(DESTDIR)$(libdir)/$(FLLIBNAME);
++	$(RM) $(DESTDIR)$(libdir)/$(notdir $(FLLIBNAME));
+ 	if test x$(FLDSONAME) = xlibfltk_forms.so.1.1; then\
+ 		$(RM) $(DESTDIR)$(libdir)/libfltk_forms.so*;\
+ 	fi
