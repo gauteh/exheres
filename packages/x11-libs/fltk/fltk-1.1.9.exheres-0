@@ -6,6 +6,6 @@ require fltk
 DOWNLOADS="http://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/${PN}/${PV}/${PNV}-source.tar.bz2"
 
 SLOT="1"
-PLATFORMS="~amd64"
+PLATFORMS="~amd64 ~x86"
 
 DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-libdir.patch" )
