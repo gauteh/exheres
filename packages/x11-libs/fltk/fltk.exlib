@@ -7,7 +7,6 @@ DESCRIPTION="FLTK (pronounced \"fulltick\") is a cross-platform C++ GUI toolkit 
 HOMEPAGE="http://fltk.org"
 
 LICENCES="GPL-2"
-SLOT="2"
 MYOPTIONS="debug
            X
            shared
