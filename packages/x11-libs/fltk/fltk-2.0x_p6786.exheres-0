@@ -3,7 +3,8 @@
 
 require fltk
 
-myver="$(ever range 1-2).x-r$(ever range 4 | tr -d 'p')"
+myver="$(ever range 1-2).x-r${PV##*_p}"
+
 DOWNLOADS="http://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/fltk/snapshots/${PN}-${myver}.tar.gz"
 
 SLOT="2"
