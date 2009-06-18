@@ -1,0 +1,70 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Copyright 2009 Hong Hao <oahong@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require freedesktop-mime freedesktop-desktop
+
+SUMMARY="PCMan file manager, a fast graphical file manager"
+DESCRIPTION="
+Features:
+* Extremly fast and lightweight
+* Can be started in one second on normal machine
+* Tabbed browsing (Similiar to Firefox)
+* Built-in volume management (mount/umount/eject through HAL)
+* Built-in file searching utility (GUI frontend for the UNIX find + grep command)
+* Drag & Drop support
+* Files can be dragged among tabs
+* Load large directories in reasonable time
+* File association support (Default application)
+* Thumbnail for image files
+* Bookmarks support
+* Handles non-UTF-8 encoded filenames correctly
+* Provides icon view, compact view, and detailed list view
+* Standard compliant (Follows FreeDesktop.org)
+* Clean and user-friendly interface (GTK+ 2)
+"
+
+HOMEPAGE="http://pcmanfm.sourceforge.net/"
+DOWNLOADS="mirror://sourceforge/${PN}/${PNV}.tar.bz2"
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="gamin
+           hal
+           desktop [[ description = [ enable desktop integration such as icons ] ]]
+           nls
+"
+
+DEPENDENCIES="
+    build:
+        nls? ( sys-devel/gettext )
+        dev-util/pkg-config
+    build+run:
+        x11-libs/gtk+:2[>=2.12]
+        dev-libs/glib:2[>=2.12]
+
+        gamin? ( app-admin/gamin )
+
+        x11-libs/startup-notification
+        hal? ( sys-apps/hal[>=0.5] 
+               sys-apps/dbus[>=0.31] )
+        "
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    # inotify support is broken
+    '--disable-inotify'
+    '--enable-largefile'
+)
+
+DEFAULT_SRC_OPTION_ENABLES=( hal "desktop desktop-integration" )
+
+pkg_postinst() {
+    freedesktop-mime_pkg_postinst
+    freedesktop-desktop_pkg_postinst
+}
+
+pkg_postrm() {
+    freedesktop-mime_pkg_postrm
+    freedesktop-desktop_pkg_postrm
+}
+
