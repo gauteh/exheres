@@ -1,0 +1,29 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="the nodoka engine is the engine for the default theme in Fedora"
+
+myname="gtk-nodoka-engine"
+
+HOMEPAGE="http://fedoraproject.org/wiki/Artwork/NodokaTheme"
+DOWNLOADS="http://mso.fedorapeople.org/nodoka/${myname}-${PV}.tar.gz"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="
+    animation
+    animationrtl
+    macmenu [[ description = [ use mac menubar patches ] ]]"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/gtk+:2
+"
+
+BUGS_TO=""
+
+DEFAULT_SRC_CONFIGURE_OPTIONS_ENABLES=( animation macmenu "animationrtl animationtoleft" )
+
+WORK="${WORKBASE}/${myname}-${PV}"
+
