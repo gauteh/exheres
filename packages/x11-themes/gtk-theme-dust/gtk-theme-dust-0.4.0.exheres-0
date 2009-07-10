@@ -1,0 +1,31 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="the Dust desktop theme, made for Ubuntu"
+DESCRIPTION="
+"
+HOMEPAGE="https://launchpad.net/dusttheme"
+
+my_v=$(ever range 1-2 ${PV})
+DOWNLOADS="http://launchpad.net/dusttheme/${my_v}/${PV}/+download/Dust-${my_v}.tar.gz http://launchpad.net/dusttheme/${my_v}/${PV}/+download/Dust-extras-${my_v}.tar.gz"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build:
+    build+run:
+"
+
+BUGS_TO="Gaute Hope <eg@gaute.vetsj.com>"
+
+WORK=${WORKBASE}
+
+src_install() {
+    cd ${WORK}
+    dodir /usr/share/themes
+    cp -r * "${IMAGE}/usr/share/themes/"
+}
+
