@@ -1,0 +1,18 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="a library to convert from/to unicode"
+
+HOMEPAGE="http://www.gnu.org/software/libiconv/"
+DOWNLOADS="http://ftp.gnu.org/pub/gnu/libiconv/${PNV}.tar.gz"
+
+LICENCES="LGPL GPL"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="
+            extra_encodings [[ description = [ Add support for rarely used encodings ] ]]
+            nls"
+
+DEPENDENCIES=""
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( nls "extra_encodings extra-encodings" )
