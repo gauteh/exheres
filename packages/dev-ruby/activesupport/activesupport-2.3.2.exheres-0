@@ -1,0 +1,19 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+require gem
+
+SUMMARY="Utility classes and extension to the standard library that were required by Rails, but found of general use."
+DESCRIPTION="
+"
+HOMEPAGE="http://rubyforge.org/projects/activesupport/"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~x86"
+
+DEPENDENCIES="
+    build+run:
+        dev-ruby/rubyforge
+"
+
