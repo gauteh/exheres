@@ -1,0 +1,27 @@
+# Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+
+SUMMARY="API for pastie.org, used by commandline utilities"
+DESCRIPTION="
+"
+HOMEPAGE="http://pastie.org/paste/579"
+DOWNLOADS="http://pastie.org/579.txt -> pastie_client.rb"
+
+LICENCES=""
+SLOT="0"
+PLATFORMS="~x86"
+
+DEPENDENCIES="
+    build+run:
+        dev-ruby/activesupport
+"
+
+WORK=${WORKBASE}
+
+src_install() {
+    dodir /usr/lib/ruby/site_ruby
+    insinto /usr/lib/ruby/site_ruby
+    doins ${FETCHEDDIR}/pastie_client.rb
+}
+
