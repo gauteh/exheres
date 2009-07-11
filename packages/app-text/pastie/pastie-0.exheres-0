@@ -4,8 +4,8 @@
 SUMMARY="command line interface to pastie"
 DESCRIPTION="
 "
-HOMEPAGE="http://tumble.lukeredpath.co.uk/post/12337047/using-pastie-from-the-command-line"
-DOWNLOADS="http://pastie.org/98642.txt -> pastie"
+HOMEPAGE="http://pastie.org/paste/584"
+DOWNLOADS="http://pastie.org/584.txt -> pastie.in"
 
 LICENCES=""
 SLOT="0"
@@ -14,6 +14,7 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     run:
+        dev-ruby/pastie_client
         dev-lang/ruby
 "
 
@@ -22,6 +23,8 @@ BUGS_TO=""
 WORK=${WORKBASE}
 
 src_install() {
-    dobin ${FETCHEDDIR}/pastie
+    echo "#! /usr/bin/ruby" > ${WORK}/pastie
+    cat ${FETCHEDDIR}/pastie.in >> ${WORK}/pastie
+    dobin pastie
 }
 
