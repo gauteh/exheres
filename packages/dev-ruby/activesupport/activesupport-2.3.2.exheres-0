@@ -8,7 +8,7 @@ DESCRIPTION="
 "
 HOMEPAGE="http://rubyforge.org/projects/activesupport/"
 
-LICENCES=""
+LICENCES="MIT"
 SLOT="0"
 PLATFORMS="~x86"
 

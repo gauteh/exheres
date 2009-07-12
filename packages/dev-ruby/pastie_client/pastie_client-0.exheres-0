@@ -8,7 +8,7 @@ DESCRIPTION="
 HOMEPAGE="http://pastie.org/paste/579"
 DOWNLOADS="http://pastie.org/579.txt -> pastie_client.rb"
 
-LICENCES=""
+LICENCES="AS-IS"
 SLOT="0"
 PLATFORMS="~x86"
 
