@@ -20,6 +20,7 @@ MYOPTIONS=""
 
 DEPENDENCIES="
     run:
+        dev-lang/ruby
         app-editors/vim
 "
 
