@@ -1,3 +1,6 @@
+Source: Elias Pipping <elias@pipping.org>
+Upstream: Attached to bug #2228: http://www.fltk.org/str.php?L2228
+Reason: /usr/lib64/../lib/[..] isn't good
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -493,17 +493,17 @@
