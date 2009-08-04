@@ -1,18 +1,27 @@
 # Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
 # Distributed under the terms of the GNU General Public Licence v2
 
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.10 ] ] #lxde
+
 SUMMARY="LXAppearance is a gtk+ theme switcher for the LXDE project"
 
 HOMEPAGE="http://lxde.sourceforge.net"
 DOWNLOADS="mirror://sourceforge/lxde/${PNV}.tar.gz"
 
-LICENCES="GPL-2"
+LICENCES="GPL-3"
 SLOT="0"
 PLATFORMS="~x86"
 MYOPTIONS=""
 
 DEPENDENCIES="
+    build:
+        dev-util/intltool
+        dev-util/pkg-config
+        sys-devel/gettext
     build+run:
-        x11-libs/gtk+[>=2.0.0]
-    "
+        x11-libs/gtk+:2
+"
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}"/${PNV}-configure.in.patch )
+DEFAULT_SRC_CONFIGURE_PARAMS=( --disable-man )
 
