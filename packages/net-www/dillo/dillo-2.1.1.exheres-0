@@ -7,4 +7,5 @@ PLATFORMS="~x86"
 
 DEPENDENCIES="
     build+run:
-        x11-libs/fltk:2[>=2.0x-p6403&<=2.0x-p6525][-cairo]"
+        x11-libs/fltk:2[>=2.0x-p6525&<2.0x-p6841][-cairo]"
+
