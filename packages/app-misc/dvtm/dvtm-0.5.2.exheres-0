@@ -20,7 +20,7 @@ DEPENDENCIES="
         sys-libs/ncurses
         "
 
-DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-preconfigure.patch)
+DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-preconfigure.patch ${FILES}/01-dont-strip.patch)
 
 src_configure () {
     default
@@ -31,7 +31,4 @@ src_configure () {
         fi
     done
 
-    # Always linking to unicode version of ncurses
-    echo "LIBS = -lc -lutil -lncursesw" >> ./config.mk || die "Failed to configure!"
 }
-

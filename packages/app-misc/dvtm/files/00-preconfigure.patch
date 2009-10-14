@@ -1,10 +1,9 @@
 Source: Gaute Hope (c) <eg@gaute.vetsj.com>
 Upstream: No
 Reason: Set prefix, prepare for dynamic configuration by exheres
-diff -ru old/config.mk new/config.mk
---- old/config.mk	2009-02-08 21:52:37.000000000 +0000
-+++ new/config.mk	2009-03-31 08:20:59.000000000 +0000
-@@ -3,20 +3,22 @@
+--- old/config.mk	2009-07-07 17:29:12.000000000 +0000
++++ work/config.mk	2009-10-14 08:41:37.000000000 +0000
+@@ -3,7 +3,7 @@
  
  # Customize below to fit your system
  
@@ -13,10 +12,7 @@ diff -ru old/config.mk new/config.mk
  MANPREFIX = ${PREFIX}/share/man
  
  INCS = -I. -I/usr/include -I/usr/local/include 
--LIBS = -lc -lutil -lncursesw
-+#LIBS = -lc -lutil -lncursesw
- #LIBS = -lc -lutil -lncurses
- 
+@@ -13,10 +13,12 @@
  CFLAGS += -std=c99 -Os ${INCS} -DVERSION=\"${VERSION}\" -DNDEBUG
  LDFLAGS += -L/usr/lib -L/usr/local/lib ${LIBS}
  
