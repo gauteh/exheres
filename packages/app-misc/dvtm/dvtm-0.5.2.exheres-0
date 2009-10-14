@@ -11,14 +11,13 @@ LICENCES="MIT X11"
 SLOT="0"
 PLATFORMS="~x86"
 MYOPTIONS="
-        mouse 
-        statusbar 
-        cmdfifo
-        unicode"
+        mouse
+        statusbar
+        cmdfifo"
 
 DEPENDENCIES="
     build+run:
-        sys-libs/ncurses[unicode?]
+        sys-libs/ncurses
         "
 
 DEFAULT_SRC_PREPARE_PATCHES=(${FILES}/00-preconfigure.patch)
@@ -30,12 +29,9 @@ src_configure () {
         if option "${f}"; then
             echo "CFLAGS += -DCONFIG_$(echo ${f} | tr [:lower:] [:upper:])" >> ./config.mk || die "Failed to configure!"
         fi
-    done 
+    done
 
-    if option "unicode"; then
-        echo "LIBS = -lc -lutil -lncursesw" >> ./config.mk || die "Failed to configure!"
-    else
-        echo "LIBS = -lc -lutil -lncurses" >> ./config.mk || die "Failed to configure!"
-    fi
+    # Always linking to unicode version of ncurses
+    echo "LIBS = -lc -lutil -lncursesw" >> ./config.mk || die "Failed to configure!"
 }
 
