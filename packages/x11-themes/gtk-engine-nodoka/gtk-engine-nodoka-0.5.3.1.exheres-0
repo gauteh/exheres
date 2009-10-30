@@ -23,7 +23,7 @@ DEPENDENCIES="
 
 BUGS_TO=""
 
-DEFAULT_SRC_CONFIGURE_OPTIONS_ENABLES=( animation macmenu "animationrtl animationtoleft" )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( animation macmenu "animationrtl animationtoleft" )
 
 WORK="${WORKBASE}/${myname}-${PV}"
 
