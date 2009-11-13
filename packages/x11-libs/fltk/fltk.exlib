@@ -23,37 +23,38 @@ MYOPTIONS="debug
 
 DEPENDENCIES="
     build+run:
-        X? ( x11-proto/xproto 
+        X? ( x11-proto/xproto
              x11-libs/libX11 )
-        gl? ( x11-proto/glproto 
+        gl? ( x11-proto/glproto
               x11-dri/mesa )
         jpeg? ( media-libs/jpeg )
         zlib? ( sys-libs/zlib )
         png? ( media-libs/libpng )
         cairo? ( x11-libs/cairo )
         xft? ( x11-libs/libXft )
-        xinerama? ( x11-libs/libXinerama 
+        xinerama? ( x11-libs/libXinerama
                     x11-proto/xineramaproto )"
 
 BUGS_TO=""
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
-        "X x"
-        debug
-        shared
-        threads
-        gl
-        jpeg
-        zlib
-        png
-        cairo
-        xft
-        xshm
-        xdbe
-        xinerama
+    "X x"
+    debug
+    shared
+    threads
+    gl
+    jpeg
+    zlib
+    png
+    cairo
+    xft
+    xshm
+    xdbe
+    xinerama
 )
 
 src_install () {
     default
     rm -r ${IMAGE}usr/share # remove empty man directories
 }
+
