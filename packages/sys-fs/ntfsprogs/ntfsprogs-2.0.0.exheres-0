@@ -21,7 +21,7 @@ DEPENDENCIES="
                         dev-libs/glib
                         gnome-platform/gnome-vfs
                       )
-            crypto? ( sys-libs/gcrypt )
+            crypto? ( dev-libs/libgcrypt )
 "
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( ntfsmount crypto gnomevfs )
