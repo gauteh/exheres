@@ -11,9 +11,10 @@ DEPENDENCIES="
     build+run:
         x11-libs/fltk:2[>=2.0x-p6525][-cairo]"
 
-src_configure() {
+src_prepare() {
     cd ${WORK}
     ./autogen.sh || die "Could not run autogen.sh!"
+
     default
 }
 

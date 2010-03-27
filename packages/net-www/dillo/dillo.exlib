@@ -26,7 +26,10 @@ BUGS_TO=""
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(ipv6 cookies png jpeg gif ssl threaded-dns rtfl)
 
-src_prepare () {
+dillo_src_prepare () {
     ewarn "Dillo seems to need gcc 4.3 to compile!"
     default
 }
+
+export_exlib_phases src_prepare
+
