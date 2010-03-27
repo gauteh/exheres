@@ -24,7 +24,7 @@ DEPENDENCIES="
 BUGS_TO=""
 
 src_install() {
-    cd ${WORK}/plugin
+    cd "${WORK}/plugin"
     dodir /usr/share/vim/vimfiles/plugin
     insinto /usr/share/vim/vimfiles/plugin
     doins pastie.vim

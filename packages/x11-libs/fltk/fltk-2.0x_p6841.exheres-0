@@ -10,7 +10,7 @@ DOWNLOADS="http://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/fltk/snapsho
 SLOT="2"
 PLATFORMS="~x86"
 
-WORK=${WORKBASE}/${PN}-${myver}
+WORK="${WORKBASE}/${PN}-${myver}"
 
 DEFAULT_SRC_PREPARE_PATCHES=("${FILES}/01-use-local-fltk2-config.patch")
 

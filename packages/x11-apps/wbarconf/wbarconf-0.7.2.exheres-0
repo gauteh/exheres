@@ -20,9 +20,9 @@ DEPENDENCIES="
         x11-apps/wbar[>=1.3.3]
         gnome-bindings/pygobject[>=2.14]"
 
-WORK=${WORKBASE}/${PN}
+WORK="${WORKBASE}"/${PN}
 
 src_install() {
-    sh ${WORK}/install.sh ${IMAGE} || die "Failed to install"
+    sh "${WORK}/install.sh" "${IMAGE}" || die "Failed to install"
 }
 

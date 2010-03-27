@@ -19,7 +19,7 @@ DEPENDENCIES="
 
 BUGS_TO=""
 
-WORK=${WORKBASE}/plan9
+WORK="${WORKBASE}/plan9"
 
 src_configure() {
     :
@@ -47,10 +47,10 @@ src_install() {
     cd "${IMAGE}/usr/lib/plan9"
     ./INSTALL -c || die "install failed!"
 
-    doenvd ${FILES}/30plan9
+    doenvd "${FILES}/30plan9"
 
     # Remove all unnecessary and empty directories
-    cd ${IMAGE}/usr/lib/plan9
+    cd "${IMAGE}/usr/lib/plan9"
 
     rm -rf ./{INSTALL,configure,install.log,install.sum,install.txt,Makefile,README,TODO}
 

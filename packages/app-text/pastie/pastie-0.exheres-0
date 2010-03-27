@@ -23,8 +23,8 @@ BUGS_TO=""
 WORK=${WORKBASE}
 
 src_install() {
-    echo "#! /usr/bin/ruby" > ${WORK}/pastie
-    cat ${FETCHEDDIR}/pastie.in >> ${WORK}/pastie
+    echo "#! /usr/bin/ruby" > "${WORK}/pastie"
+    cat "${FETCHEDDIR}/pastie.in" >> "${WORK}/pastie"
     dobin pastie
 }
 

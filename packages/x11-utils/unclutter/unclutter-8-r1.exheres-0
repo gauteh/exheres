@@ -31,19 +31,19 @@ DEPENDENCIES="
 "
 
 # The archive extracts to ${PN}/ rather than the standard ${PNV}/.
-WORK=${WORKBASE}/${PN}
+WORK="${WORKBASE}/${PN}"
 
 src_prepare () {
     default
 
     # Fix non-standard install paths in the Makefile.
-    expatch ${FILES}/00-fix_Makefile.patch
+    expatch "${FILES}"/00-fix_Makefile.patch
 }
 
 src_install () {
     # Install man pages via the Makefile's "install.man" target.
-    edo mkdir -p ${IMAGE}/usr/bin
-    edo mkdir -p ${IMAGE}/usr/share/man/man1
+    edo mkdir -p "${IMAGE}"/usr/bin
+    edo mkdir -p "${IMAGE}"/usr/share/man/man1
     emake -j1 DESTDIR="${IMAGE}" "${DEFAULT_SRC_INSTALL_PARAMS[@]}"install.man
 
     default

@@ -55,6 +55,6 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(
 
 src_install () {
     default
-    rm -r ${IMAGE}usr/share # remove empty man directories
+    rm -r "${IMAGE}"usr/share # remove empty man directories
 }
 

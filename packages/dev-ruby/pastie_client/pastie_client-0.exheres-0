@@ -17,11 +17,11 @@ DEPENDENCIES="
         dev-ruby/activesupport
 "
 
-WORK=${WORKBASE}
+WORK="${WORKBASE}"
 
 src_install() {
     dodir /usr/lib/ruby/site_ruby
     insinto /usr/lib/ruby/site_ruby
-    doins ${FETCHEDDIR}/pastie_client.rb
+    doins "${FETCHEDDIR}/pastie_client.rb"
 }
 

@@ -40,17 +40,17 @@ src_compile() {
 
 src_install() {
     default
-    rm -rf ${IMAGE}/usr/include
+    rm -rf "${IMAGE}"/usr/include
 
     # Get rid of build paths
     sed -i -e "s|${IMAGE}||g" "${IMAGE}/usr/bin/wmiistartrc" || die "sed failed!"
 
     # Create X11 session
-    echo "/usr/bin/wmii" > ${TEMP}/wmii
+    echo "/usr/bin/wmii" > "${TEMP}"/wmii
     exeinto /etc/X11/Sessions
-    doexe ${TEMP}/wmii
+    doexe "${TEMP}"/wmii
 
     insinto /usr/share/xsessions
-    doins ${FILES}/wmii.desktop
+    doins "${FILES}"/wmii.desktop
 }
 

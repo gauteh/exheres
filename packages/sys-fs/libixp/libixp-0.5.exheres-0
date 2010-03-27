@@ -28,6 +28,6 @@ src_configure() {
 
 src_install() {
     default
-    rm -rf ${IMAGE}/usr/etc
+    rm -rf "${IMAGE}/usr/etc"
 }
 
