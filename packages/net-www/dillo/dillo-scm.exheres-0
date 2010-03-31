@@ -1,13 +1,10 @@
 # Distributed under the GNU General Public Licence v2
 # Copyright (c) 2009 Gaute Hope <eg@gaute.vetsj.com>
 
-require dillo
-require scm
+SCM_REPOSITORY="http://hg.dillo.org/dillo"
+require dillo scm-hg
 
 DOWNLOADS=""
-SCM_REPOSITORY="http://hg.dillo.org/dillo"
-require scm-hg
-
 PLATFORMS="~x86"
 
 DEPENDENCIES="
@@ -19,3 +16,4 @@ src_configure() {
     ./autogen.sh || die "Could not run autogen.sh!"
     default
 }
+

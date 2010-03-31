@@ -1,17 +1,14 @@
 # Copyright 2009 Gaute Hope <eg@gaute.vetsj.com>
 # Distributed under the GNU General Public Licence v2
 
-require scm
+SCM_REPOSITORY="git://github.com/tpope/vim-pastie.git"
+require scm-git
 
 SUMMARY="vim integration with http://pastie.org"
 DESCRIPTION="
 "
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=1624"
 DOWNLOADS=""
-
-SCM_REPOSITORY="git://github.com/tpope/vim-pastie.git"
-require scm-git
-
 
 LICENCES="AS-IS"
 SLOT="0"
