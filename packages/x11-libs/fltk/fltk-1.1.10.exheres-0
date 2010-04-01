@@ -1,15 +1,11 @@
 # Distributed under the GNU General Public Licence v2
 # Copyright Gaute Hope (c) 2009 <eg@gaute.vetsj.com>
-
-MY_PV=$(ever delete 3)
-MY_PNV=${PN}-${MY_PV}
+# Copyright Adriaan Leijnse 2010 <adriaan@leijnse.net>
 
 require fltk autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.10 ] ]
 
-DOWNLOADS="http://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/${PN}/${MY_PV}/${MY_PNV}-source.tar.bz2"
+DOWNLOADS="http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/${PN}/${PV}/${PNV}-source.tar.bz2"
 
 SLOT="1"
 PLATFORMS="~amd64 ~x86"
-
-WORK="${WORKBASE}/${MY_PNV}"
 
