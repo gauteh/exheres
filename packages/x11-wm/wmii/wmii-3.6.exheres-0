@@ -46,9 +46,8 @@ src_install() {
     sed -i -e "s|${IMAGE}||g" "${IMAGE}/usr/bin/wmiistartrc" || die "sed failed!"
 
     # Create X11 session
-    echo "/usr/bin/wmii" > "${TEMP}"/wmii
     exeinto /etc/X11/Sessions
-    doexe "${TEMP}"/wmii
+    doexe "${FILES}"/wmii
 
     insinto /usr/share/xsessions
     doins "${FILES}"/wmii.desktop

@@ -4,6 +4,5 @@ Name=wmii
 Comment=window manager improved 2
 Exec=wmii
 TryExec=wmii
-Icon=
-Type=Application
+Type=XSession
 

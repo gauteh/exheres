@@ -1,0 +1,46 @@
+# Copyright 2009 (c) Gaute Hope <eg@gaute.vetsj.com>
+# Distributed under the GNU General Public Licence v2
+
+SUMMARY="wmii is a small, dynamic window manager for X11"
+DESCRIPTION="wmii is a small, dynamic window manager for X11. It is scriptable, has a 9p filesystem interface and supports classic and tiling (acme-like) window management. It aims to maintain a small and clean (read hackable and beautiful) codebase."
+
+HOMEPAGE="http://wmii.suckless.org"
+
+MY_PN="wmii+ixp"
+MY_V=${PV/_beta/b}
+DOWNLOADS="http://code.suckless.org/dl/wmii/${MY_PN}-${MY_V}.tbz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~x86"
+MYOPTIONS="plan9 [[ description = [ Use plan9 for runtime scripts - is determined at runtime ] ]]"
+
+DEPENDENCIES="
+    build:
+        x11-proto/xproto
+    build+run:
+        x11-libs/libX11
+    run:
+        plan9? ( sys-fs/plan9port )
+"
+
+BUGS_TO="Gaute Hope <eg@gaute.vetsj.com>"
+
+REPLACING_IDS="sys-fs/libixp" # is provided with newer wmii's
+
+WORK="${WORKBASE}/${MY_PN}-${MY_V}"
+
+DEFAULT_SRC_COMPILE_PARAMS=("PREFIX=/usr" "ETC=/etc")
+DEFAULT_SRC_INSTALL_PARAMS=("PREFIX=/usr" "ETC=/etc")
+
+src_install() {
+  default
+
+  # Install X11 session
+  exeinto /etc/X11/Sessions
+  doexe "${FILES}"/wmii
+
+  insinto /usr/share/xsessions
+  doins "${FILES}"/wmii.desktop
+}
+
