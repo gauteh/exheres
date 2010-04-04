@@ -1,0 +1,14 @@
+Source: Gaute Hope <eg@gaute.vetsj.com>
+Upstream: No
+Reason: Stripping is done by package manager
+diff -ru old/fluid/Makefile new/fluid/Makefile
+--- old/fluid/Makefile	2009-10-22 10:58:07.000000000 +0000
++++ new/fluid/Makefile	2010-04-04 15:11:14.000000000 +0000
+@@ -133,7 +133,6 @@
+ 	echo "Installing FLUID2 in $(bindir)..."
+ 	-$(MKDIR) $(DESTDIR)$(bindir)
+ 	$(CP) $(FLUID) $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+-	$(STRIP) $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 	$(DESTDIR)$(bindir)/fltk2-config --post $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 	$(CHMOD) 755 $(DESTDIR)$(bindir)/fluid2$(EXEEXT)
+ 

@@ -24,7 +24,8 @@ MYOPTIONS="debug
 DEPENDENCIES="
     build+run:
         X? ( x11-proto/xproto
-             x11-libs/libX11 )
+             x11-libs/libX11
+             x11-libs/libXi )
         gl? ( x11-proto/glproto
               x11-dri/mesa )
         jpeg? ( media-libs/jpeg )
