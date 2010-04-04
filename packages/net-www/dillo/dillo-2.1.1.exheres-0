@@ -6,6 +6,13 @@ require dillo
 PLATFORMS="~x86"
 
 DEPENDENCIES="
+    build:
+        sys-devel/gcc:4.3
     build+run:
         x11-libs/fltk:2[>=2.0x-p6525&<2.0x-p6841][-cairo]"
+
+src_prepare () {
+    ewarn "Dillo seems to need gcc 4.3 to compile!"
+    default
+}
 

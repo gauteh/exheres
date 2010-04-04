@@ -12,8 +12,6 @@ SLOT="0"
 MYOPTIONS="ipv6 cookies png jpeg gif ssl threaded-dns rtfl"
 
 DEPENDENCIES="
-    build:
-        sys-devel/gcc:4.3
     build+run:
         x11-libs/libX11 
         x11-libs/fltk:2[>=2.0x-p6403][-cairo]
@@ -25,11 +23,4 @@ DEPENDENCIES="
 BUGS_TO=""
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=(ipv6 cookies png jpeg gif ssl threaded-dns rtfl)
-
-dillo_src_prepare () {
-    ewarn "Dillo seems to need gcc 4.3 to compile!"
-    default
-}
-
-export_exlib_phases src_prepare
 
