@@ -1,6 +1,6 @@
 Source: Gaute Hope <eg@gaute.vetsj.com>
 Upstream: No
-Reason: Stripping is done by package manager
+Reason: Don't strip (only necessary for the fluid Makefile) 
 diff -ru old/fluid/Makefile new/fluid/Makefile
 --- old/fluid/Makefile	2009-10-22 10:58:07.000000000 +0000
 +++ new/fluid/Makefile	2010-04-04 15:11:14.000000000 +0000
