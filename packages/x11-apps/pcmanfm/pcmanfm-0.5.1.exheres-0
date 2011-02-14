@@ -30,7 +30,6 @@ LICENCES="GPL-2"
 SLOT="0"
 PLATFORMS="~amd64 ~x86"
 MYOPTIONS="gamin
-           hal
            desktop [[ description = [ enable desktop integration such as icons ] ]]
            nls
 "
@@ -46,17 +45,16 @@ DEPENDENCIES="
         gamin? ( app-admin/gamin )
 
         x11-libs/startup-notification
-        hal? ( sys-apps/hal[>=0.5] 
-               sys-apps/dbus[>=0.31] )
         "
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(
     # inotify support is broken
     '--disable-inotify'
     '--enable-largefile'
+    '--disable-hal'
 )
 
-DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( hal "desktop desktop-integration" )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( "desktop desktop-integration" )
 
 pkg_postinst() {
     freedesktop-mime_pkg_postinst
