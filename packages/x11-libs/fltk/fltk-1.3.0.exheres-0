@@ -4,7 +4,7 @@
 
 require fltk autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.10 ] ]
 
-DOWNLOADS="http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/${PN}/${PV}/${PNV}-source.tar.bz2"
+DOWNLOADS="http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/${PN}/${PV}/${PNV}-source.tar.gz"
 
 SLOT="1"
 PLATFORMS="~amd64 ~x86"
